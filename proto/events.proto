@@ -1,0 +1,19 @@
+syntax = "proto3";
+
+package events;
+
+message Event {
+  string id = 1;
+  string name = 2;
+  uint64 timestamp = 3;
+  string event_data = 4;
+  uint64 offset = 5;
+}
+
+message EventSubscriptionRequest {
+  uint64 from_offset = 1; 
+}
+
+service EventService {
+  rpc SubscribeToEvents(EventSubscriptionRequest) returns (stream Event);
+}

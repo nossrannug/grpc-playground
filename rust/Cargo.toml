@@ -1,0 +1,29 @@
+[package]
+name = "rust"
+version = "0.1.0"
+authors = ["Gunnar Sv Sigurbjörnsson <gunnar.sigurbjornsson@gmail.com>"]
+edition = "2021"
+
+[[bin]]
+name = "grpc-server"
+path = "src/server.rs"
+
+[[bin]]
+name = "grpc-client"
+path = "src/client.rs"
+
+[dependencies]
+tonic = "0.6"
+prost = "0.9"
+prost-types = "0.9"
+futures-core = "0.3"
+futures-util = "0.3"
+tokio = { version = "1.0", features = ["rt-multi-thread", "macros", "sync", "time"] }
+tokio-stream = "0.1"
+
+async-stream = "0.2"
+serde = { version = "1.0", features = ["derive"] }
+serde_json = "1.0"
+
+[build-dependencies]
+tonic-build = "0.6"
